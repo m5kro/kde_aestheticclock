@@ -1,17 +1,18 @@
 // IMPORT
 // QtQuick
-import QtQuick 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.15
-import QtQml 2.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQml
 
 // Plasma Modules
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.plasmoid
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.plasma5support as Plasma5Support
+import org.kde.plasma.components as PlasmaComponents
 
 // MAIN
-Item {
+PlasmoidItem {
     id: root
     
     // Loading Fonts
@@ -61,7 +62,7 @@ Item {
     property string colorThree: useSystemColors ? PlasmaCore.Theme.neutralTextColor : Plasmoid.configuration.color_three
 
     // Plasmoid
-    Plasmoid.fullRepresentation: Item {
+    fullRepresentation: Item {
         id: widget
         Plasmoid.backgroundHints: (enableShadows ? PlasmaCore.Types.ShadowBackground : PlasmaCore.Types.NoBackground) | PlasmaCore.Types.ConfigurableBackground
         Layout.minimumWidth: wrapper.implicitWidth + 50
@@ -69,7 +70,7 @@ Item {
         
         
         // Time Data Source
-        PlasmaCore.DataSource {
+        Plasma5Support.DataSource {
             id: timeSource
             engine: "time"
             connectedSources: ["Local"]
@@ -123,7 +124,7 @@ Item {
         }   
 
         // System Monitor Data Source
-        PlasmaCore.DataSource {
+        Plasma5Support.DataSource {
             id: sysMonSource
             engine: "systemmonitor"
             connectedSources: ["mem/physical/available", "cpu/system/TotalLoad", "system/uptime"]
@@ -160,7 +161,7 @@ Item {
         }
         
         // Music Data Source
-        PlasmaCore.DataSource {
+        Plasma5Support.DataSource {
             id: musicSource
             engine: "mpris2"
             property bool showAudio: Plasmoid.configuration.show_audio

@@ -16,7 +16,7 @@
         "Version": "0.2.2",
         "Website": "https://github.com/prayag2/kde_aestheticclock"
     },
-    "X-Plasma-API": "declarativeappletscript",
-    "X-Plasma-MainScript": "ui/main.qml", 
+    "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-Provides": "org.kde.plasma.time,org.kde.plasma.date"
+    
 }
